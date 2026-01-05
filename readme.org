@@ -202,7 +202,7 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 
 *** Org specific Concepts
 #+BEGIN_SRC emacs-lisp 
-'(org-verbatim ((t (:background "old lace" :foreground "dark olive green"))))
+'(org-verbatim ((t (:background "old lace" :foreground "chartreuse4" :weight semi-light))))
 '(org-link ((t (:foreground "midnight blue" :background "alice blue" :underline (:color "gray" :style dashes)))))
 '(org-tag  ((t (:background "<<std-background>>" :foreground "steel blue" :weight semi-light :height 0.8))))
 '(org-drawer  ((t (:background "<<std-background>>" :foreground "#727272" :weight semi-light :height 0.7))))
@@ -232,7 +232,7 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 # '(org-block-end-line  ((t (:background "wheat2" :foreground "Brown4" :overline "<<std-background>>"))))
 # #+END_SRC 
 
-*** LaTeX
+** LaTeX
 
 #+BEGIN_SRC emacs-lisp
 '(font-latex-sectioning-1-face ((t (:inherit 'org-document-title))))
@@ -241,8 +241,7 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 '(font-latex-sectioning-4-face ((t (:inherit 'outline-3))))
 '(font-latex-sectioning-5-face ((t (:inherit 'outline-4))))
 
-'(font-latex-math-face ((t (:background "<<std-background>>" :foreground "DarkGoldenrod4" :weight thin))))
-'(font-latex-script-char-face ((t (:background "<<std-background>>" :foreground "DarkGoldenrod2" :weight thin))))
+'(font-latex-math-face ((t :inherit 'org-verbatim)))
 #+END_SRC
 
 ** Other
@@ -343,6 +342,16 @@ C++ doesn't work, something fishy is happening with CC-mode and its friends
      ("\\(cppclass\\)[[:blank:]]+" 1 '(:inherit 'font-lock-keyword-face :background  "<<other-background>>") t)
      ("\\(extern\\)[[:blank:]]+" 1 '(:inherit 'font-lock-keyword-face :background "<<other-background>>") t)
      ("^[[:blank:]]*cdef[[:blank:]]+\\(.*\\)(.*):" 1 'font-lock-function-name-face t)))
+#+END_SRC
+
+** Adding missing fonts in latex
+
+#+BEGIN_SRC elisp
+  (font-lock-add-keywords
+   'LaTeX-mode
+   '(
+     ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
+     ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
 #+END_SRC
 
 ** Machinery to define the theme
