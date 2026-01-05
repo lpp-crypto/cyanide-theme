@@ -12,6 +12,9 @@ My solution to this problem is to rely on two hacks:
 - by setting =org-num-face= to have a high contrast with the text (in the screenshot below, it corresponds to the numbers in black on =cyan=), I obtain a very visible structure for documents,
 - by drawing a thick box around headings that is of the same color as the actual background, I effectively obtain vertical margins around them that further highlight the structure.
 
+#+CAPTION: screencap of this file rendered in cyanide-theme
+[[./figures/screencap-readme.png]]
+
 Then, I applied this general principle in other places: first in =markdown-mode=, where I colored the =#= symbols, and then in LaTeX files, where =(sub*)section= is in blue, and where the titles have the big brown fonts with the margins.
 * Setup
 ** Colors
