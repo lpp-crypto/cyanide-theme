@@ -207,10 +207,9 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 '(org-tag  ((t (:background "<<std-background>>" :foreground "steel blue" :weight semi-light :height 0.8))))
 '(org-drawer  ((t (:background "<<std-background>>" :foreground "#727272" :weight semi-light :height 0.7))))
 '(org-table  ((t (:background "<<std-background>>" :foreground "Purple3" :weight semi-light :height 0.9))))
-
 #+END_SRC 
 
-*** Keywords (TODO et al.)
+*** Keywords (TODO et al.) :attentionNeeded:
 
 #+BEGIN_SRC emacs-lisp 
 '(org-headline-done ((t (:foreground "dark green" :background "<<std-background>>"))))
@@ -321,14 +320,16 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 
 #+END_SRC
 
-We ensure that =org-num-face= is set properly whenever we are in an =org= buffer.
+We set =org-num-face= to a non-nil value so that the digits at the start of org-mode headings have their own font (rather than the one of the rest of the heading).
 
 #+BEGIN_SRC elisp
 (setopt org-num-face 'cyanide-num-face)
 #+END_SRC
 
-** Adding missing fonts in python/cython
-C++ doesn't work, something fishy is happening with CC-mode and its friends
+** Adding missing fonts in python/cython :hack:
+I use =python= and =cython= a lot, and I have found two problems. For =python=, class names are not highlighted in a specific way. However, a class name is a meaningful information in terms of structure, so I highlight it.
+
+Not having a dedicated cython mode, I instead use =python-mode= and highlight some of the corresponding keywords by hand.
 
 #+BEGIN_SRC elisp
   (font-lock-add-keywords
