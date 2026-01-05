@@ -3,7 +3,16 @@
 #+PROPERTY: header-args  :tangle ./cyanide-light-theme.el  :noweb yes  :results output silent
 
 
+This file looks OK when rendered on github, but it is probably best read in =emacs=.
 
+* Philosophy
+The main idea behind this theme is to rely on colors and font size to quickly identify the structure of a text file (be it the org-mode file containing my bibliography, an org-roam entry, a python file, or a markdown file). A first inspiration for this was the [[https://github.com/fniessen/emacs-leuven-theme][emacs-leuven-theme]], however, due to the various use cases I have for org-mode, I also wanted headings not to look too different from the regular text.
+
+My solution to this problem is to rely on two hacks:
+- by setting =org-num-face= to have a high contrast with the text (in the screenshot below, it corresponds to the numbers in black on =cyan=), I obtain a very visible structure for documents,
+- by drawing a thick box around headings that is of the same color as the actual background, I effectively obtain vertical margins around them that further highlight the structure.
+
+Then, I applied this general principle in other places: first in =markdown-mode=, where I colored the =#= symbols, and then in LaTeX files, where =(sub*)section= is in blue, and where the titles have the big brown fonts with the margins.
 * Setup
 ** Colors
 #+NAME: std-color
