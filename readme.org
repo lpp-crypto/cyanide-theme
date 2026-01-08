@@ -348,11 +348,17 @@ Not having a dedicated cython mode, I instead use =python-mode= and highlight so
 ** Adding missing fonts in latex
 
 #+BEGIN_SRC elisp
-  (font-lock-add-keywords
-   'LaTeX-mode
-   '(
-     ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
-     ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
+(font-lock-add-keywords
+ 'LaTeX-mode
+ '(
+   ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
+   ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
+(font-lock-add-keywords
+ 'latex-mode
+ '(
+   ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
+   ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
+
 #+END_SRC
 
 ** Machinery to define the theme

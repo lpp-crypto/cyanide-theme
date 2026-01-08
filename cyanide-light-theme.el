@@ -174,6 +174,11 @@
  '(
    ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
    ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
+(font-lock-add-keywords
+ 'latex-mode
+ '(
+   ("\\(\\\\.*section\\*?\\){" 1 'cyanide-num-face t)
+   ("\\(\\\\paragraph\\*?\\){" 1 'cyanide-num-face t)))
 
 ;;;###autoload
 (when load-file-name
