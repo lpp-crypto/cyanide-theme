@@ -94,10 +94,12 @@ lemon chiffon
 #+END_SRC
 
 ** Ongoing Typing
+The cursor font is not specified so it can be specified in the configuration itself (and in particular match the beacon).
+
 #+BEGIN_SRC emacs-lisp 
  '(hl-line ((t (:background "white"))))
  '(mouse ((t (:foreground "black"))))
- '(cursor ((t (:background "red3"))))
+ '(cursor ((t (:background "#d9a032"))))
  '(region ((t (:background "AntiqueWhite2"))))
  '(highlight ((t (:background "LightSteelBlue1"))))
 #+END_SRC
@@ -326,7 +328,7 @@ We set =org-num-face= to a non-nil value so that the digits at the start of org-
 (setopt org-num-face 'cyanide-num-face)
 #+END_SRC
 
-** Adding missing fonts in python/cython :hack:
+** Adding missing fonts in python/cython :stable:
 I use =python= and =cython= a lot, and I have found two problems. For =python=, class names are not highlighted in a specific way. However, a class name is a meaningful information in terms of structure, so I highlight it.
 
 Not having a dedicated cython mode, I instead use =python-mode= and highlight some of the corresponding keywords by hand.

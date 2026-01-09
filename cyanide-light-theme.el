@@ -22,7 +22,7 @@
 
 '(hl-line ((t (:background "white"))))
 '(mouse ((t (:foreground "black"))))
-'(cursor ((t (:background "red3"))))
+'(cursor ((t (:background "#d9a032"))))
 '(region ((t (:background "AntiqueWhite2"))))
 '(highlight ((t (:background "LightSteelBlue1"))))
 
