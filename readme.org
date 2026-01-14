@@ -164,14 +164,6 @@ print(
 #+END_SRC 
 
 
-# #+BEGIN_SRC emacs-lisp 
-# '(outline-1 <<org-heading-template(color="#4477BB", height=1.4, weight="extra-bold", space=10)>>)
-# '(outline-2 <<org-heading-template(color="#4477AA", height=1.3, weight="semi-bold", space=7)>>)
-# '(outline-3 <<org-heading-template(color="#446677", height=1.2, weight="semi-bold", space=5)>>)
-# '(outline-4 <<org-heading-template(color="#113355", height=1.05, weight="semi-bold", space=3)>>)
-# '(outline-5 <<org-heading-template(color="#001833", height=1.0, weight="semi-bold", space=2)>>)
-# #+END_SRC 
-
 For meuporg, maybe grab the function [[./meuporg.el::#meuporg/fontify][meuporg/fontify]] and move it here; or do something that would enable the fonts to be set elsewhere.
 
 ** Markdown
@@ -197,18 +189,21 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 
 *** Code blocks
 #+BEGIN_SRC emacs-lisp 
-'(org-block-begin-line  ((t (:background "moccasin" :foreground "Brown4" :underline (:color "<<std-background>>")))))
-'(org-block ((t (:background "old lace"))))
-'(org-block-end-line  ((t (:background "moccasin" :foreground "Brown4"))))
+  '(org-block-begin-line  ((t (:background "old lace" :foreground "IndianRed3" :weight semi-light :height 0.8 :box (:line-width (1 . 7) :color "old lace")))))
+  
+  '(org-block ((t (:background "old lace"))))
+  '(org-block-end-line  ((t (:inherit 'org-block-begin-line))))
 #+END_SRC
 
 *** Org specific Concepts
 #+BEGIN_SRC emacs-lisp 
-'(org-verbatim ((t (:background "old lace" :foreground "chartreuse4" :weight semi-light))))
-'(org-link ((t (:foreground "midnight blue" :background "alice blue" :underline (:color "gray" :style dashes)))))
-'(org-tag  ((t (:background "<<std-background>>" :foreground "steel blue" :weight semi-light :height 0.8))))
-'(org-drawer  ((t (:background "<<std-background>>" :foreground "#727272" :weight semi-light :height 0.7))))
-'(org-table  ((t (:background "<<std-background>>" :foreground "Purple3" :weight semi-light :height 0.9))))
+  '(org-verbatim ((t (:background "old lace" :foreground "chartreuse4" :weight semi-light))))
+  '(org-link ((t (:foreground "midnight blue" :background "alice blue" :underline (:color "gray" :style dashes)))))
+  '(org-tag  ((t (:background "<<std-background>>" :foreground "steel blue" :weight semi-light :height 0.8))))
+  '(org-drawer  ((t (:background "<<std-background>>" :foreground "#727272" :weight semi-light :height 0.7))))
+  '(org-table  ((t (:background "<<std-background>>" :foreground "Purple3" :weight semi-light :height 0.9))))
+  '(org-date  ((t (:background "white" :foreground "dark olive green" :height 0.9 :underline (:color "gray" :style dashes)))))
+  
 #+END_SRC 
 
 *** Keywords (TODO et al.) :attentionNeeded:
