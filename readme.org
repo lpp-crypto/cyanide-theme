@@ -20,23 +20,37 @@ Then, I applied this general principle in other places: first in =markdown-mode=
 ** Colors
 #+NAME: std-color
 #+BEGIN_SRC elisp :tangle no
-#393939
+#707070
 #+END_SRC
 
-The =ivory2= color
 #+NAME: std-background
 #+BEGIN_SRC elisp :tangle no
-#eeeee8
+#f3f3f3
 #+END_SRC
 
 #+NAME: other-background
 #+BEGIN_SRC elisp :tangle no
-thistle
+#bdbb97
+#+END_SRC
+
+#+NAME: code-background
+#+BEGIN_SRC elisp :tangle no
+#fbeddb
+#+END_SRC
+
+#+NAME: code-color
+#+BEGIN_SRC elisp :tangle no
+#bd480f
 #+END_SRC
 
 #+NAME: highlight-background
 #+BEGIN_SRC elisp :tangle no
-lemon chiffon
+white
+#+END_SRC
+
+#+NAME: highlight-color
+#+BEGIN_SRC elisp :tangle no
+#333333
 #+END_SRC
 
 #+NAME: outline-background
@@ -44,16 +58,15 @@ lemon chiffon
 white
 #+END_SRC
 
-=DeepSkyBlue1=
 
 #+NAME: structure-background
 #+BEGIN_SRC elisp :tangle no
-#87cefa
+#7db7db
 #+END_SRC
 
 #+NAME: structure-color
 #+BEGIN_SRC elisp :tangle no
-#000000
+#ffffff
 #+END_SRC
 
 ** Additional fonts
@@ -73,7 +86,7 @@ white
 
 #+BEGIN_SRC elisp
   (defface mode-line-path
-      '((t . (:weight semi-light :foreground "light gray" :background "dark slate gray")))
+    '((t . (:weight semi-light :foreground "light gray" :background "dark slate gray")))
       "A face for (partial) paths in the mode line.")
 
   (defface mode-line-file-name
@@ -112,8 +125,8 @@ white
 The cursor font is not specified so it can be specified in the configuration itself (and in particular match the beacon).
 
 #+BEGIN_SRC emacs-lisp 
- '(hl-line ((t (:background "white"))))
- '(mouse ((t (:foreground "black"))))
+ '(hl-line ((t (:background "<<highlight-background>>" :foreground "<<highlight-color>>"))))
+ '(mouse ((t (:foreground "#333333"))))
  '(cursor ((t (:background "#d9a032"))))
  '(region ((t (:background "AntiqueWhite2"))))
  '(highlight ((t (:background "LightSteelBlue1"))))
@@ -124,8 +137,8 @@ The cursor font is not specified so it can be specified in the configuration its
  '(view-highlight-face ((t (:background "<<std-background>>"))))
  '(gui-button-face ((t (:foreground "light grey"))))
  '(secondary-selection ((t (:background "paleturquoise"))))
- '(custom-button-face ((t (:background "cyanide" :foreground "dark cyan"))))
- '(custom-documentation-face ((t (:background "cyanide"))))
+ '(custom-button-face ((t (:background "cyan" :foreground "dark cyan"))))
+ '(custom-documentation-face ((t (:background "cyan"))))
 #+END_SRC
 * Colors for Specific Uses
 ** Mode line
@@ -151,16 +164,16 @@ The cursor font is not specified so it can be specified in the configuration its
 ** Outline-mode
 Dark brown: 79492d
 #+NAME: outline-heading-template
-#+BEGIN_SRC python :var space=0 :var color="tan" :var background_hl=0 :var height=1.0 :var weight="normal" :noweb yes :results output :tangle no
+#+BEGIN_SRC python :var space=0 :var color="black" :var background_hl=0 :var height=1.0 :var weight="normal" :noweb yes :results output :tangle no
   print(
       "((t (:background \"{}\" :foreground \"{}\" :height {} :weight {} :box (:line-width ({} . {}) :color \"{}\"))))".format(
-          "#bdad99" if background_hl else "<<std-background>>",
-          color,
+          "<<highlight-color>>" if background_hl else "<<std-background>>",
+          "<<highlight-background>>" if background_hl else color,
           height,
           weight,
           space,
           space,
-          "#bdad99" if background_hl else "<<std-background>>"
+          "<<highlight-color>>" if background_hl else "<<std-background>>"
       ), end="")
 #+END_SRC
 
@@ -168,11 +181,11 @@ Dark brown: 79492d
 
 
 #+BEGIN_SRC emacs-lisp  
-'(outline-1 <<outline-heading-template(color="black", height=1.7, weight="extra-bold", space=10, background_hl=1)>>)
-'(outline-2 <<outline-heading-template(color="#a14821", height=1.5, weight="bold", space=10)>>)
-'(outline-3 <<outline-heading-template(color="#653c29", height=1.2, weight="semi-bold", space=6)>>)
-'(outline-4 <<outline-heading-template(color="#513428", height=1.05, weight="semi-bold", space=3)>>)
-'(outline-5 <<outline-heading-template(color="#513428", height=1.0, weight="semi-bold", space=2)>>)
+'(outline-1 <<outline-heading-template(height=1.7, weight="extra-bold", space=10, background_hl=1)>>)
+'(outline-2 <<outline-heading-template(color="#222222", height=1.5, weight="bold", space=10)>>)
+'(outline-3 <<outline-heading-template(color="#444444", height=1.2, weight="semi-bold", space=6)>>)
+'(outline-4 <<outline-heading-template(color="#555555", height=1.05, weight="semi-bold", space=3)>>)
+'(outline-5 <<outline-heading-template(color="#666666", height=1.0, weight="semi-bold", space=2)>>)
 #+END_SRC 
 
 
@@ -204,23 +217,23 @@ Org-mode headings inherit their styling from the =outline-mode= font faces defin
 
 *** The title and its comment
 #+BEGIN_SRC emacs-lisp 
-'(org-document-title ((t (:background "<<structure-color>>" :foreground "<<structure-background>>" :height 2.0 :weight semi-bold))))
+'(org-document-title ((t (:background "<<highlight-color>>" :foreground "<<highlight-background>>" :height 2.0 :weight semi-bold))))
 '(org-document-info-keyword  ((t (:background "<<structure-background>>" :foreground "<<structure-color>>" :height 0.8 :weight semi-light))))
 #+END_SRC
 
 *** Code blocks
 #+BEGIN_SRC emacs-lisp 
-  '(org-block-begin-line  ((t (:background "old lace" :foreground "IndianRed3" :weight semi-light :height 0.8 :box (:line-width (1 . 7) :color "old lace")))))
+  '(org-block-begin-line  ((t (:background "<<code-background>>" :foreground "<<code-color>>" :weight semi-light :height 0.8 :box (:line-width (1 . 7) :color "<<code-background>>")))))
   
-  '(org-block ((t (:background "old lace"))))
+  '(org-block ((t (:background "<<code-background>>" :foreground "#444444"))))
   '(org-block-end-line  ((t (:inherit 'org-block-begin-line))))
 #+END_SRC
 
 *** Org specific Concepts
 #+BEGIN_SRC emacs-lisp 
-  '(org-verbatim ((t (:background "old lace" :foreground "chartreuse4" :weight semi-light))))
+  '(org-verbatim ((t (:background "<<code-background>>" :foreground "chartreuse4" :weight semi-light))))
   '(org-link ((t (:foreground "midnight blue" :background "alice blue" :underline (:color "gray" :style dashes)))))
-  '(org-tag  ((t (:foreground "steel blue" :weight semi-light :height 0.8))))
+  '(org-tag  ((t (:foreground "#86755e" :weight semi-light :height 0.8))))
   '(org-drawer  ((t (:background "<<std-background>>" :foreground "#727272" :weight semi-light :height 0.7))))
   '(org-table  ((t (:background "<<std-background>>" :foreground "Purple3" :weight semi-light :height 0.9))))
   '(org-date  ((t (:background "white" :foreground "dark olive green" :height 0.9 :underline (:color "gray" :style dashes)))))  
@@ -246,8 +259,8 @@ The headings are part of the regular content of the file, so they do not need a 
 
   '(org-warning ((t (:foreground "white" :background "#C00000" :weight semi-bold))))
   '(org-todo ((t (:foreground "red" :weight semi-bold))))
-  '(org-upcoming-deadline ((t (:foreground "gray"))))
-  '(org-upcoming-distant-deadline ((t (:foreground "tan"))))  
+  '(org-upcoming-deadline ((t (:foreground "orange2" :weight semi-bold))))
+  '(org-upcoming-distant-deadline ((t (:foreground "olive drab")))) 
 #+END_SRC 
 
 ** LaTeX
