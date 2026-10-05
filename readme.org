@@ -45,7 +45,7 @@ Then, I applied this general principle in other places: first in =markdown-mode=
 
 #+NAME: code-comment-color
 #+BEGIN_SRC elisp :tangle no
-#398a76
+#709b7c
 #+END_SRC
 
 #+NAME: highlight-background
@@ -194,9 +194,9 @@ Dark brown: 79492d
 
 #+BEGIN_SRC emacs-lisp  
 '(outline-1 <<outline-heading-template(height=1.7, weight="extra-bold", space=10, background_hl=1)>>)
-'(outline-2 <<outline-heading-template(color="#222222", height=1.5, weight="bold", space=10)>>)
-'(outline-3 <<outline-heading-template(color="#444444", height=1.2, weight="semi-bold", space=6)>>)
-'(outline-4 <<outline-heading-template(color="#555555", height=1.05, weight="semi-bold", space=3)>>)
+'(outline-2 <<outline-heading-template(color="#222238", height=1.5, weight="bold", space=10)>>)
+'(outline-3 <<outline-heading-template(color="#445844", height=1.2, weight="semi-bold", space=6)>>)
+'(outline-4 <<outline-heading-template(color="#685555", height=1.05, weight="semi-bold", space=3)>>)
 '(outline-5 <<outline-heading-template(color="#666666", height=1.0, weight="semi-bold", space=2)>>)
 #+END_SRC 
 
